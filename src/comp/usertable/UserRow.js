@@ -2,9 +2,9 @@
 
 import React from 'react';
 import './UserRow.css';
-const UserRow = ({ user }) => {
+const UserRow = ({ user, onClick }) => {
   return (
-    <tr>
+    <tr onClick={onClick}>
       <td>{user.id}</td>
       <td>{user.username}</td>
       <td>{user.email}</td>
