@@ -1,9 +1,6 @@
-// AccountCreationTab.js
-
 import React, { useState } from 'react';
-import mockUserData from '../usertable/userData';
 
-const AccountCreationTab = () => {
+const AccountCreationTab = ({ onAddUser }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,27 +18,20 @@ const AccountCreationTab = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newUserData = {
-      id: mockUserData.length + 1,
-      name: formData.name,
+      username: formData.name,
       email: formData.email,
       phone: formData.mobile,
       creationDate: new Date().toISOString().split('T')[0],
     };
 
-    mockUserData.push(newUserData);
-
-    // Log updated user data to the console
-    console.log('Updated User Data:', mockUserData);
-
-    // Clear form fields after submission
+    onAddUser(newUserData);
+    console.log(newUserData);
+    
     setFormData({
       name: '',
       email: '',
       mobile: '',
     });
-
-    // Notify the user about successful update
-    console.log('Successfully updated user information!');
   };
 
   return (

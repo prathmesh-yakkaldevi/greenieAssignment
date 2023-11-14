@@ -1,15 +1,15 @@
 // UserTable.js
 
 import React, { useState } from 'react';
-import mockUserData from './userData'; 
 import UserRow from './UserRow';
 import './UserTable.css';
-const UserTable = () => {
+const UserTable = ({ userData }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredUsers = mockUserData.filter(user =>
-    user.username.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredUsers = userData.filter(user =>
+    user.username && user.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
 
   return (
     <div className="user-table-container">

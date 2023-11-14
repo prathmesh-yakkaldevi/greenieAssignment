@@ -1,6 +1,6 @@
 // userData.js
 
-const mockUserData = [
+const userData = [
     {
       id: 1,
       username: 'john_doe',
@@ -24,5 +24,5 @@ const mockUserData = [
       },
   ];
   
-  export default mockUserData;
+  export default userData;
   
