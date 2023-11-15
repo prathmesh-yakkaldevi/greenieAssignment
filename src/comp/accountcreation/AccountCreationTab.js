@@ -31,6 +31,7 @@ const AccountCreationTab = ({ onAddUser }) => {
       name: '',
       email: '',
       mobile: '',
+      password: '',
     });
   };
 
@@ -68,6 +69,17 @@ const AccountCreationTab = ({ onAddUser }) => {
             name="mobile"
             value={formData.mobile}
             onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            // onChange={handleInputChange}
             required
           />
         </div>

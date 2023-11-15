@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './UserTable.css';
 import UserRow from './UserRow.js';
+import ReportModal from './ReportModal.js';
 
 const UserTable = ({ userData }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const filteredUsers = userData.filter(
     (user) =>
@@ -14,10 +16,12 @@ const UserTable = ({ userData }) => {
 
   const handleUserClick = (user) => {
     setSelectedUser(user);
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
     setSelectedUser(null);
+    setShowModal(false);
   };
 
   const generateDummyReport = (user) => {
@@ -49,18 +53,12 @@ const UserTable = ({ userData }) => {
       </table>
 
       {/* Modal for generating report */}
-      {selectedUser && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={handleCloseModal}>
-              close &times;
-            </span>
-            <h3>Generate Report for {selectedUser.username}</h3>
-            <button onClick={() => generateDummyReport(selectedUser)}>
-              Generate Report
-            </button>
-          </div>
-        </div>
+      {showModal && (
+        <ReportModal
+          selectedUser={selectedUser}
+          onClose={handleCloseModal}
+          onGenerateReport={generateDummyReport}
+        />
       )}
     </div>
   );
