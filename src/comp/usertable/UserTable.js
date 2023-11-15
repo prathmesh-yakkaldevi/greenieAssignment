@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './UserTable.css';
 import UserRow from './UserRow.js';
 import ReportModal from './ReportModal.js';
 
@@ -10,8 +9,12 @@ const UserTable = ({ userData }) => {
 
   const filteredUsers = userData.filter(
     (user) =>
-      user.username &&
-      user.username.toLowerCase().includes(searchTerm.toLowerCase())
+      (
+        user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.phone.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      
   );
 
   const handleUserClick = (user) => {
@@ -31,23 +34,29 @@ const UserTable = ({ userData }) => {
   };
 
   return (
-    <div className="user-table-container">
-      <h2>User Details</h2>
+    <div className="p-4">
+      <h2 className="text-2xl mb-4">User Details</h2>
       <input
         type="text"
-        placeholder="Search by username..."
+        placeholder="Search by keyword..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="search-input"
+        className="p-2 border border-gray-300 rounded mb-4"
       />
 
-      <table className="user-table">
+      <table className="w-full border-collapse border border-gray-300">
         <thead>
-          {/* Table headers */}
+        <tr className="border border-gray-300">
+          <th className="px-4 py-2">ID</th>
+          <th className="px-4 py-2">Username</th>
+          <th className="px-4 py-2">Email</th>
+          <th className="px-4 py-2">Phone</th>
+          <th className="px-4 py-2">Creation Date</th>
+        </tr>
         </thead>
         <tbody>
           {filteredUsers.map((user) => (
-           <UserRow key={user.id} user={user} onClick={() => handleUserClick(user)} />
+            <UserRow key={user.id} user={user} onClick={() => handleUserClick(user)} />
           ))}
         </tbody>
       </table>
@@ -65,4 +74,3 @@ const UserTable = ({ userData }) => {
 };
 
 export default UserTable;
-
