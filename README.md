@@ -1,9 +1,11 @@
-# greenieAssignment
+<h1>greenieAssignment</h1>
 
-To get started with this React app, follow these steps:
+<p>To get started with this React app, follow these steps:</p>
 
-```
-git clone https://github.com/prathmesh-yakkaldevi/greenieAssignment.git
+<pre><code>git clone https://github.com/prathmesh-yakkaldevi/greenieAssignment.git
 cd greenieAssignment
 npm install
-npm run
+npm start
+</code></pre>
+
+<p><strong>Live Link:</strong> <a href="https://greenie-assignment-ebon.vercel.app">greenie-assignment-ebon.vercel.app</a></p>
